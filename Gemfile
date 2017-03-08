@@ -41,7 +41,12 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for IAM
   gem 'devise'
 
+# Bootstrap gem
   gem 'bootstrap', '~> 4.0.0.alpha6'
+
+#ActiveAdmin
+  gem 'activeadmin', github: 'activeadmin/activeadmin'
+  gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
