@@ -13,7 +13,12 @@ Product.delete_all
 Profile.delete_all
 User.delete_all
 
-# Creation de l'artiste
+# Creation des users
+
+myadmin = User.new(email:'admin@admin.com')
+myadmin.password = 'adminadmin'
+myadmin.admin = true
+myadmin.save!
 
 myartistuser = User.new(email:'toto@gmail.com')
 myartistuser.password = 'test123'
@@ -24,7 +29,7 @@ myuser2.password = 'password'
 myuser2.save!
 
 
-# Creation du profile
+# Creation des profiles
 
 myartist = Profile.new(profile_type: 'artist', firstname: 'toto', lastname: 'zero', picture: 'default_pic', country: 'FR', universe_name: 'la tete a toto', universe_picture: 'default_pic')
 myartist.user = myartistuser
