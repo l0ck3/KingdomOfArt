@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Remise à zéro de la base existante
+require "faker"
 
 Order.delete_all
 Product.delete_all
@@ -22,6 +23,36 @@ myartistuser.save!
 myuser2 = User.new(email:'carole@gmail.com')
 myuser2.password = 'password'
 myuser2.save!
+
+# Création de plusieurs artists a partir de seed
+
+# artists_list = Services::Scrapper.new.scrap_artsy_all
+artists_list = ["Federico-Herrero", "Andrea-Mary-Marshall", "Julius-von-Bismarck", "Wyatt-Kahn", "Huang-Xu", "Zhang-Xiang-Min", "Jitish-Kallat", "Lee-Jeonglok", "Kahn-&-Selesnick", "Janet-Delaney", "Donald-Judd", "Joseph-Kosuth", "Gabriel-Rosas-Alemán", "Pascale-Marthine-Tayou", "Carol-Rama", "Robert-Frank", "Johannes-Nagel", "Masanori-Umeda", "Chris-Wolston", "Jorge-Pardo", "Robert-Indiana", "Gordon-Parks", "Louise-Bourgeois", "Joseph-Kosuth", "Hugo-Lugo", "Carlos-Amorales", "Charles-Gaines", "Rudolf-Stingel", "Keith-Haring", "Meyer-Vaisman", "Jenny-Holzer", "Tseng-Kwong-Chi"]
+
+artists_list.each do |artist|
+
+      html_file = open("https://www.artsy.net/artist/#{artist}")
+      html_doc = Nokogiri::HTML(html_file)
+
+      html_doc.search('.artist-header-name').each do |element|
+        prenom = element.text.split.first
+        a = element.text.split
+        a.shift
+        nom = a.join(" ")
+        user1 = User.new(email: Faker::Internet.email, password: Faker::PhoneNumber.subscriber_number(7))
+        user1.save!
+        artist = Profile.new(firstname: prenom, lastname: nom)
+        artist.user = user1
+        artist.save!
+
+      end
+    end
+     #  html_doc.search('.blurb').each do |element|
+      # description = element.text
+      #  end
+
+      # { name: name, description: description }
+
 
 
 # Creation du profile
