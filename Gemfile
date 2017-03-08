@@ -41,6 +41,10 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for IAM
   gem 'devise'
 
+  #ActiveAdmin
+  gem 'activeadmin', github: 'activeadmin/activeadmin'
+  gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
