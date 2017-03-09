@@ -1,0 +1,21 @@
+<section class="module-xs p-b-0">
+  <div class="works-grid-wrapper">
+    <div id="works-grid" class="works-grid works-grid-masonry works-grid-gutter works-grid-4">
+      <% @profiles.shuffle.each do |profile| %>
+        <article class="work-item brand">
+          <div class="work-wrapper">
+            <%= cl_image_tag("content/STHU9241.jpg") %>
+            <!--    WHEN PICTURE IS AVAILABLE !! <%= cl_image_tag profile.universe_picture %> -->
+            <div class="work-overlay">
+              <div class="work-caption">
+                <h6 class="work-title"><%= profile.universe_name %></h6>
+                <span class="work-category"><%= profile.firstname + " " + profile.lastname %></span>
+              </div>
+            </div>
+            <a href="portfolio-single-1.html" class="work-link"></a>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</section>
