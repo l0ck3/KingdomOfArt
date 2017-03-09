@@ -52,14 +52,6 @@ gem 'jbuilder', '~> 2.5'
   gem 'cloudinary'
   gem 'carrierwave'
 
-
-#Cloudinary
-  gem 'cloudinary'
-  gem 'carrierwave', '~> 0.11.2'
-
-#Figaro
-  gem "figaro"
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
