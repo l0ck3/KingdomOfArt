@@ -14,3 +14,21 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.sign-up-link {
+  color: white ;
+  padding: 33px 15px !important;
+}
+
+.extras-user {
+  position: relative;
+  bottom: 2px;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+
+
+
