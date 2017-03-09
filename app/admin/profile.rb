@@ -13,7 +13,7 @@ form do |f|
       f.input :firstname
       f.input :lastname
       f.label "Picture "
-      f.file_field :picture
+      f.input :picture
       f.input :birth_date
       f.input :biography
     end
@@ -30,7 +30,7 @@ form do |f|
     f.inputs "Universe" do
       f.input :universe_name
       f.label "Universe Picture "
-      f.file_field :universe_picture
+      f.input :universe_picture
     end
     f.actions
   end
