@@ -12,9 +12,8 @@ form do |f|
       f.select :profile_type,["artist","client"]
       f.input :firstname
       f.input :lastname
-      f.label "Picture "
       f.input :picture
-      f.input :birth_date
+      f.input :birth_date, as: :datepicker, datepicker_options: { min_date: "1920-10-8", max_date: "+3D", changeYear: true,  start_year: Time.now.year - 50, end_year: Time.now.year + 50}
       f.input :biography
     end
 
@@ -29,7 +28,6 @@ form do |f|
     end
     f.inputs "Universe" do
       f.input :universe_name
-      f.label "Universe Picture "
       f.input :universe_picture
     end
     f.actions

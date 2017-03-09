@@ -48,6 +48,10 @@ gem 'jbuilder', '~> 2.5'
   gem 'activeadmin', github: 'activeadmin/activeadmin'
   gem 'inherited_resources', github: 'activeadmin/inherited_resources'
   gem 'country_select'
+  gem 'figaro'
+  gem 'cloudinary'
+  gem 'carrierwave'
+
 
 #Cloudinary
   gem 'cloudinary'
