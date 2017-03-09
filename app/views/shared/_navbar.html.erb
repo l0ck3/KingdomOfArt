@@ -1,192 +1,95 @@
-<!-- HEADER -->
 <header class="header header-fixed header-transparent">
-  <div class="container">
-    <!-- YOUR LOGO HERE -->
-    <div class="inner-header">
-      <a class="inner-brand" href="index.html">
-        <img class="brand-light" src="assets/images/logo-light.png" width="100" alt="">
-        <img class="brand-dark" src="assets/images/logo-dark.png" width="100" alt="">
-      </a>
-    </div>
-    <!-- OPEN MOBILE MENU -->
-    <div class="main-nav-toggle">
-      <div class="nav-icon-toggle" data-toggle="collapse" data-target="#custom-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+    <div class="container">
+      <!-- YOUR LOGO HERE -->
+      <div class="inner-header">
+        <a class="inner-brand" href="index.html">
+          <img class="brand-light" src="assets/images/logo-light.png" width="100" alt="">
+          <img class="brand-dark" src="assets/images/logo-dark.png" width="100" alt="">
+        </a>
       </div>
-    </div>
-    <!-- WIDGETS MENU -->
-    <div class="inner-header pull-right">
-      <div class="menu-extras clearfix">
-        <div class="menu-item">
-          <div class="extras-user">
-            <% if current_user %>
-            <%= link_to admin_profile_path(current_user.profile), class: "navbar-kingdom-item navbar-kingdom-link" do %>
-            <div class="navbadge-container">
-              <i class="fa fa-envelope-o"></i>
-              <%= current_user.profile.lastname %>
-            </div>
-            <% end %>
-            <% end %>
-          </div>
+    
+      <!-- OPEN MOBILE MENU -->
+      <div class="main-nav-toggle">
+        <div class="nav-icon-toggle" data-toggle="collapse" data-target="#custom-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </div>
-        <% if current_user %>
-        <div class="menu-item">
-          <div class="extras-login">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-kingdom-item navbar-kingdom-button btn" %>
-        <% else %>
-            <%= link_to "Sign up / Log in", new_user_session_path, class: "
-            navbar-kingdom-item navbar-kingdom-button btn sign-up-link" %>
-          </div>
-        </div>
-        <% end %>
-        <!-- SEARCH -->
-        <div class="menu-item hidden-xxs">
-          <div class="extras-search">
-            <a id="modal-search" href="#"><i class="icon-magnifier icons"></i></a>
-            <form action="#" class="header-search-form">
-              <div class="search-form-inner">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="header-search-form-clouse">
-                        <a href="#" class="form-close-btn">✕</a>
+      </div>
+    
+      <!-- WIDGETS MENU -->
+      <div class="inner-header pull-right">
+        <div class="menu-extras clearfix">
+    
+          <!-- SEARCH -->
+          <div class="menu-item hidden-xxs">
+            <div class="extras-search">
+              <a id="modal-search" href="#"><i class="icon-magnifier icons"></i></a>
+              <form action="#" class="header-search-form">
+                <div class="search-form-inner">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="header-search-form-clouse">
+                          <a href="#" class="form-close-btn">✕</a>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <input type="text" placeholder="Type &amp; hit enter">
+                      <div class="col-sm-12">
+                        <input type="text" placeholder="Type &amp; hit enter">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
-        <!-- END SEARCH -->
-      </div>
-    </div></div>
-    <!-- MAIN MENU -->
-    <nav id="custom-collapse" class="main-nav collapse clearfix">
-      <ul class="inner-nav pull-right">
-        <!-- HOME -->
-        <li class="has-submenu">
-          <a href="#">Home</a>
-        </li>
-        <!-- END HOME -->
-        <!-- PAGES -->
-        <li class="has-submenu">
-          <a href="#">Pages</a>
-        </li>
-        <!-- END PAGES -->
-        <!-- FEATURES -->
-        <li class="has-submenu">
-          <a href="#">Filters</a>
-        </li>
-        <!-- END FEATURES -->
-        <!-- SHORTCODES: MEGA MENU -->
-        <li class="has-submenu">
-          <a href="#">Messages</a>
-        </li>
-        <!-- END SHORTCODES: MEGA MENU -->
-        <!-- User logged?<--></-->
-        <!-- Notification link-->
-        <!-- Button (Sign up / log in/out) -->
-        <!-- Dropdown appearing on mobile only -->
-        <div class="navbar-kingdom-item hidden-md hidden-lg">
-          <div class="dropdown">
-            <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-            <ul class="dropdown-menu dropdown-menu-right navbar-kingdom-dropdown-menu">
-              <li><a href="#">Some mobile link</a></li>
-              <li><a href="#">Other one</a></li>
-              <li><a href="#">Other one</a></li>
-            </ul>
-          </div>
-        </div>
-      </ul>
-    </nav>
-  </div>
-</header>
-<!-- END HEADER -->
-</div>
-<!-- /WRAPPER -->
-<!-- SHOP CART -->
-<div class="off-canvas-cart">
-<div class="off-canvas-cart-wrapper">
-  <div class="off-canvas-cart-header">
-    <a id="cart-toggle" href="#">
-      <i class="icon-arrow-right-circle icons"></i>
-    </a>
-  </div>
-  <div class="off-canvas-cart-content">
-    <div class="off-canvas-cart-content-wrap">
-      <!-- ITEM -->
-      <div class="off-canvas-cart-item">
-        <div class="off-canvas-cart-item-trash">
-          <a href="#"><i class="icon-trash icons"></i></a>
-        </div>
-        <div class="off-canvas-cart-item-thumbnail">
-          <a href="#"><img class="cart-thumbnail" src="assets/images/shop/1.jpg" alt=""></a>
-        </div>
-        <div class="off-canvas-cart-item-title">
-          <h5 class="m-b-5"><a href="#">Buttoned Linen Skirt</a></h5>
-          $44.00 × 1
+          <!-- END SEARCH -->
+    
         </div>
       </div>
-      <!-- END ITEM -->
-      <!-- ITEM -->
-      <div class="off-canvas-cart-item">
-        <div class="off-canvas-cart-item-trash">
-          <a href="#"><i class="icon-trash icons"></i></a>
-        </div>
-        <div class="off-canvas-cart-item-thumbnail">
-          <a href="#"><img class="cart-thumbnail" src="assets/images/shop/2.jpg" alt=""></a>
-        </div>
-        <div class="off-canvas-cart-item-title">
-          <h5 class="m-b-5"><a href="#">Printed Bermuda Shorts</a></h5>
-          $80.00 × 1
-        </div>
-      </div>
-      <!-- END ITEM -->
-      <!-- ITEM -->
-      <div class="off-canvas-cart-item">
-        <div class="off-canvas-cart-item-trash">
-          <a href="#"><i class="icon-trash icons"></i></a>
-        </div>
-        <div class="off-canvas-cart-item-thumbnail">
-          <a href="#"><img class="cart-thumbnail" src="assets/images/shop/3.jpg" alt=""></a>
-        </div>
-        <div class="off-canvas-cart-item-title">
-          <h5 class="m-b-5"><a href="#">Short Frilled Skirt</a></h5>
-          $40.00 × 1
-        </div>
-      </div>
-      <!-- END ITEM -->
+    
+      <!-- MAIN MENU -->
+      <nav id="custom-collapse" class="main-nav collapse clearfix">
+        <ul class="inner-nav pull-right">
+    
+          <!-- HOME -->
+          <li class="has-submenu">
+            <a href="#">Home</a>
+          </li>
+          <!-- END HOME -->
+    
+          <!-- PAGES -->
+          <li class="has-submenu">
+            <a href="#">Pages</a>
+          </li>
+          <!-- END PAGES -->
+
+          <!-- FILTERS -->
+          <li class="has-submenu">
+            <a href="#">Filters</a>
+          </li>
+          <!-- END FILTERS -->
+
+          <!-- MESSAGES -->
+          <li class="has-submenu">
+            <a href="#">Messages</a>
+          </li>
+          <!-- END MESSAGES -->
+    
+          <!-- DIVIDER -->
+          <li><a>&nbsp;</a></li>
+    
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to 'SIGN UP / SIGN IN', new_user_session_path %>
+            <% end %>
+
+          </li>
+    
+        </ul>
+      </nav>
+    
     </div>
-  </div>
-  <div class="off-canvas-cart-footer">
-    <div class="off-canvas-cart-info">
-      <div class="row">
-        <div class="col-xs-6">
-          <h4 class="m-0">Total:</h4>
-        </div>
-        <div class="col-xs-6">
-          <h4 class="m-0 text-right">$1380.00</h4>
-        </div>
-      </div>
-    </div>
-    <div class="off-canvas-cart-control">
-      <a href="#" class="btn btn-lg btn-block btn-outline btn-fade btn-round btn-dark">Checkout</a>
-      <a href="#" class="btn btn-lg btn-block btn-round btn-base">Edit Cart</a>
-    </div>
-  </div>
-</div>
-</div>
-<!-- END SHOP CART -->
-<!-- JAVASCRIPT FILES -->
-<script src="assets/js/jquery-2.2.3.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/plugins.min.js"></script>
-<script src="assets/js/custom.min.js"></script>
-</body>
+  </header>
