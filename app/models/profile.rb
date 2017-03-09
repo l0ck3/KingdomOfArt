@@ -4,4 +4,8 @@ class Profile < ApplicationRecord
   validates :profile_type, presence: true, inclusion: { in: ["client","artist"], allow_nil: false }
   validates :firstname, presence: true
   validates :lastname, presence: true
+
+  def to_s
+    firstname + " " + lastname
+  end
 end
