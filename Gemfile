@@ -48,6 +48,7 @@ gem 'jbuilder', '~> 2.5'
   gem 'activeadmin', github: 'activeadmin/activeadmin'
   gem 'inherited_resources', github: 'activeadmin/inherited_resources'
   gem 'country_select'
+  gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
