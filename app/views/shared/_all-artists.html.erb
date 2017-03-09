@@ -4,8 +4,7 @@
       <% @profiles.shuffle.each do |profile| %>
         <article class="work-item brand">
           <div class="work-wrapper">
-            <%= cl_image_tag("content/STHU9241.jpg") %>
-            <!--    WHEN PICTURE IS AVAILABLE !! <%= cl_image_tag profile.universe_picture %> -->
+            <%= cl_image_tag profile.universe_picture %>
             <div class="work-overlay">
               <div class="work-caption">
                 <h6 class="work-title"><%= profile.universe_name %></h6>
