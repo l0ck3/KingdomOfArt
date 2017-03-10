@@ -8,8 +8,7 @@ form do |f|
     f.inputs "Product" do
       f.input :name
       f.input :description
-      f.label "Picture "
-      f.file_field :picture
+      f.input :picture
       f.input :price
     end
 
@@ -21,6 +20,13 @@ form do |f|
   end
 
 permit_params :name, :description, :picture, :price, :user_id
+
+index do
+  id_column
+  column :name
+  column :picture
+  actions
+end
 #
 # or
 #
