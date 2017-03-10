@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   layout "profile_edit", only: [ :edit ]
 
   def show
+    @products = Product.all.select { |product| product.user == @profile.user }
   end
 
   def edit
