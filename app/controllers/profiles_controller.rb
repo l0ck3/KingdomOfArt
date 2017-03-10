@@ -1,7 +1,17 @@
 class ProfilesController < ApplicationController
-  before_action :find_profile, only: [:show]
+  before_action :find_profile, only: [:show, :edit, :update]
+  layout "profile_edit", only: [ :edit ]
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
+    redirect_to profile_path(@profile) # Show
   end
 
   private

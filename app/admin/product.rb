@@ -20,6 +20,13 @@ form do |f|
   end
 
 permit_params :name, :description, :picture, :price, :user_id
+
+index do
+  id_column
+  column :name
+  column :picture
+  actions
+end
 #
 # or
 #

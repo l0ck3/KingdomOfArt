@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><%= yield(:title_tag).blank? ? "Kingdom of Art" : yield(:title_tag) %></title>
+    <title><%= yield(:title_tag_home).blank? ? "Kingdom of Art" : yield(:title_tag_home) %></title>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="theme/assets/images/favicon.png">
@@ -45,6 +45,7 @@
   <body>
     <%= render "shared/navbar" %>
     <%= yield %>
+    <%= render "shared/footer" %>
       <!-- JAVASCRIPT FILES -->
       <script src="theme/assets/js/jquery-2.2.3.min.js"></script>
       <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>

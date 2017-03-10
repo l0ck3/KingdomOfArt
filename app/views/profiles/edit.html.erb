@@ -1,0 +1,110 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">update your profile</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+  <!-- LOGIN -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+          <h4 class="text-center m-b-30">Update your profile</h4>
+
+          <%= form_for(@profile, url: profile_path(@profile)) do |f| %>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'First name' %>
+              <%= f.text_field :firstname, autofocus: true, :placeholder => @profile.firstname, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Last name' %>
+              <%= f.text_field :lastname, autofocus: true, :placeholder => @profile.lastname, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Birth date' %>
+              <%= f.datetime_field :birth_date, autofocus: true, :placeholder => @profile.biography, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'artist or client' %>
+              <%= f.text_field :profile_type, autofocus: true, :placeholder => @profile.profile_type, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label>Your Picture</label>
+              <%= image_tag(@profile.picture) if @profile.picture? %>
+              <%= f.file_field :picture, :class => "btn btn-block btn-round btn-base" %>
+              <%= f.hidden_field :picture_cache %>
+            </div>
+
+            <% if @profile.profile_type == 'artist' %>
+
+              <div class="col-md-12 form-group">
+                <%= f.label 'Biography' %>
+                <%= f.text_area :biography, autofocus: true, :placeholder => @profile.biography, :class => "form-control input-lg", :cols => "10", :rows => "10" %>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <%= f.label 'Universe name' %>
+                <%= f.text_field :universe_name, autofocus: true, :placeholder => @profile.universe_name, :class => "form-control input-lg" %>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <label>Universe Picture</label>
+                <%= image_tag(@profile.universe_picture) if @profile.universe_picture? %>
+                <%= f.file_field :universe_picture, :class => "btn btn-block btn-round btn-base" %>
+                <%= f.hidden_field :universe_picture_cache %>
+              </div>
+
+            <% end %>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Address' %>
+              <%= f.text_field :address, autofocus: true, :placeholder => @profile.address, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'City' %>
+              <%= f.text_field :city, autofocus: true, :placeholder => @profile.city, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Country' %>
+              <%= f.text_field :country, autofocus: true, :placeholder => @profile.country, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-block btn-round btn-base">Update</button>
+            </div>
+          <% end %>
+
+        </div>
+      </div><!-- .row -->
+
+    </div>
+  </section>
+  <!-- END LOGIN -->
+</div>

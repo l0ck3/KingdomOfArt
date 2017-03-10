@@ -1,6 +1,8 @@
 <!-- WRAPPER -->
 <div class="wrapper">
 
+<% if @profile.profile_type == 'artist' %>
+
   <!-- HERO -->
   <section id="hero" class="module-hero bg-black-alfa-40 color-white parallax" data-background=<%= @profile.universe_picture %> >
 
@@ -23,6 +25,7 @@
     <!-- END HERO TEXT -->
   </section>
   <!-- END HERO -->
+<% end %>
 
   <!-- TEAM -->
   <section class="module">
@@ -52,6 +55,9 @@
           </div>
         </div>
         <!-- END ARTIST -->
+
+        <% if @profile.profile_type == 'artist' %>
+
         <!-- BIOGRAPHY -->
         <div class="col-sm-6 col-md-9">
           <div class="col-sm-9 page-content">
@@ -60,6 +66,9 @@
           </div>
         </div>
         <!-- END BIOGRAPHY -->
+
+        <% end %>
+
       </div>
     </div><!-- .row -->
   </section>
