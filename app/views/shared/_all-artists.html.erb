@@ -11,7 +11,8 @@
                 <span class="work-category"><%= profile.firstname + " " + profile.lastname %></span>
               </div>
             </div>
-            <a href="portfolio-single-1.html" class="work-link"></a>
+            <%= link_to profile_path(profile), :class => "work-link" do %>
+            <% end %>
           </div>
         </article>
       <% end %>
