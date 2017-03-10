@@ -1,0 +1,77 @@
+<!-- WRAPPER -->
+<div class="wrapper">
+
+  <!-- HERO -->
+  <section id="hero" class="module-hero bg-black-alfa-40 color-white parallax" data-background=<%= @profile.universe_picture %> >
+
+    <!-- HERO TEXT -->
+    <div class="hero-caption">
+      <div class="hero-text">
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <h1 class="text-uppercase text-xl montserrat m-b-15"><%= @profile.universe_name %></h1>
+              <p class="lead">We have space for a cool universe sub-title</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- END HERO TEXT -->
+  </section>
+  <!-- END HERO -->
+
+  <!-- TEAM -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <!-- ARTIST -->
+        <div class="col-sm-6 col-md-3">
+          <div class="team-item m-b-sm-35">
+            <div class="team-photo">
+              <%= cl_image_tag @profile.picture %>
+              <div class="team-social">
+                <div>
+                  <div>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="team-inner">
+              <h6 class="team-name"><%= @profile.firstname.capitalize + " " + @profile.lastname.capitalize %> </h6>
+              <span class="team-role"><%= @profile.profile_type.capitalize %></span>
+              <span class="team-role"><%= @profile.birth_date %></span>
+            </div>
+          </div>
+        </div>
+        <!-- END ARTIST -->
+        <!-- BIOGRAPHY -->
+        <div class="col-sm-6 col-md-9">
+          <div class="col-sm-9 page-content">
+            <h1>Biography</h1>
+            <p><%= @profile.biography %></p>
+          </div>
+        </div>
+        <!-- END BIOGRAPHY -->
+      </div>
+    </div><!-- .row -->
+  </section>
+
+</div>
+
+<!-- MAP -->
+<section class="module divider-bottom p-0">
+  <div class="maps-container">
+    <!-- ADD YOUR ADDRESS HERE -->
+    <div id="map" data-addresses="[48.859822, 2.352647],[47.394930, 0.683666]" data-info="[Lorem ipsum dolor sit amet.],[Lorem ipsum dolor sit amet.]" data-icon="assets/images/map-icon.png" data-zoom="5"></div>
+  </div>
+</section>
+<!-- END MAP -->
+
