@@ -6,6 +6,8 @@ class Profile < ApplicationRecord
   validates :lastname, presence: true
 
   mount_uploader :picture, PictureUploader
+  mount_uploader :universe_picture, PictureUploader
+
 
   def to_s
     firstname + " " + lastname
