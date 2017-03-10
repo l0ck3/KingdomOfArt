@@ -35,6 +35,16 @@ form do |f|
 
   permit_params :profile_type, :firstname, :lastname, :picture, :birth_date, :biography, :address, :city, :country, :user_id, :universe_name, :universe_picture
 
+
+index do
+  id_column
+  column :profile_type
+  column :user
+  column :picture
+  column :universe_name
+  column :universe_picture
+  actions
+end
 # or
 #
 # permit_params do
