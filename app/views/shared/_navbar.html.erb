@@ -37,8 +37,9 @@
         <% end %>
         </li>
         <li class="menu-item">
-           <% if current_user %>
-            <%= link_to admin_profile_path(current_user.profile), class: "navbar-kingdom-item navbar-kingdom-link" do %>
+           <% if current_user && current_user.profile != nil%>
+
+            <%= link_to profile_path(current_user.profile), class: "navbar-kingdom-item navbar-kingdom-link" do %>
             <div class="navbadge-container">
               <i class="fa fa-envelope-o"></i>
               <%= current_user.profile.lastname %>
