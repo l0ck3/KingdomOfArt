@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
   before_action :find_artist_profile, only: [:new, :edit, :destroy, :update]
   layout "order_new", only: [ :new ]
+  layout "order_index", only: [ :index ]
 
   def index
+    @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
   end
 
   def show
@@ -12,7 +14,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @client_user = User.find(current_user)
     @artist_user = User.find(@artist_profile.user)
-    @product = Product.where(user_id: @artist_user.id) # Change with a real link to the selected product !
+    @product = Product.where(user_id: @artist_user.id)
   end
 
   def create

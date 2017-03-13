@@ -1,2 +1,54 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">List of your orders</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5 class="montserrat text-uppercase bottom-line">Currents orders</h5>
+        <table class="table">
+          <tr>
+            <th>Artist</th>
+            <th>Client</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.artist.profile.firstname + ' ' + order.artist.profile.lastname %></td>
+                <td><%= order.user.profile.firstname + ' ' + order.user.profile.lastname %></td>
+                <td><%= order.product.name %></td>
+                <td><%= order.product.price.to_s + ' €' %></td>
+                <td> Buttons Edit order and Next_process_step to add for the artist</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
