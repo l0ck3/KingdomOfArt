@@ -5,6 +5,19 @@ class ProfilesController < ApplicationController
   def show
   end
 
+  def new
+    @profile = Profile.new
+  end
+
+  def create
+    @profile = Profile.create(profile_params)
+    if @profile.profile_type == nil
+      @profile.profile_type = "client"
+    end
+    @profile.save
+    redirect_to profile_path(@profile)
+  end
+
   def edit
   end
 
