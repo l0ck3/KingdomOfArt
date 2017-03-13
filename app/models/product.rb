@@ -10,3 +10,5 @@ class Product < ApplicationRecord
     name
   end
 end
+
+
