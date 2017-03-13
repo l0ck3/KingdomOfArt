@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_artist_profile, only: [:new, :edit, :destroy, :update]
+  before_action :find_artist_profile, only: [:new, :edit, :update]
   layout "order_new", only: [ :new ]
   layout "order_index", only: [ :index ]
 
@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to profile_orders_path(params[:profile_id])
   end
 
   private
