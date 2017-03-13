@@ -6,6 +6,19 @@ class ProfilesController < ApplicationController
     @products = Product.all.select { |product| product.user == @profile.user }
   end
 
+  def new
+    @profile = Profile.new
+  end
+
+  def create
+    @profile = Profile.create(profile_params)
+    if @profile.profile_type == nil
+      @profile.profile_type = "client"
+    end
+    @profile.save
+    redirect_to profile_path(@profile)
+  end
+
   def edit
   end
 
