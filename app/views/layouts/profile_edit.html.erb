@@ -44,6 +44,7 @@
 
   <body>
     <%= yield %>
+    <%= render "shared/footer" %>
       <!-- JAVASCRIPT FILES -->
       <script src="../../theme/assets/js/jquery-2.2.3.min.js"></script>
       <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
@@ -52,6 +53,7 @@
       <script src="../../theme/assets/js/plugins.min.js"></script>
       <script src="../../theme/assets/js/custom.min.js"></script>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= yield(:js) %>
   </body>
 
 </html>

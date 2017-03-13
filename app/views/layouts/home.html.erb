@@ -54,6 +54,7 @@
       <script src="theme/assets/js/plugins.min.js"></script>
       <script src="theme/assets/js/custom.min.js"></script>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= yield(:js) %>
   </body>
 
 </html>
