@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.artist = Profile.find(params[:profile_id]).user
     @order.user = current_user
+    @order.status = 'purchase_request'
     if @order.save
     else
       fail # need to manage errors
