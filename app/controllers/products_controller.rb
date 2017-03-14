@@ -10,6 +10,10 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def product_params
+    params.require(:product).permit(:product, :description, :price, :picture, :picture_cache)
+  end
+
   def create
   end
 
