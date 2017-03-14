@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :find_artist_profile, only: [:new, :edit, :destroy, :update]
-  layout "order_new", only: [ :new ]
-  layout "order_index", only: [ :index ]
+  layout "lvl4_layout", only: [ :new, :edit, :index ]
 
   def index
+    artist_profile = Profile.find(params[:profile_id])
+    @order_artist_user = User.find(artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
   end
 
@@ -11,38 +11,42 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @artist_profile = Profile.find(params[:profile_id])
     @order = Order.new
-    @client_user = User.find(current_user)
-    @artist_user = User.find(@artist_profile.user)
-    @product = Product.where(user_id: @artist_user.id)
+    @order_artist_user = @artist_profile.user
+    @order_product = Product.where(user_id: @order_artist_user.id)
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.artist = Profile.find(params[:profile_id]).user
-    @order.user = current_user
-    @order.status = 'purchase_request'
-    if @order.save
+    @artist_profile = Profile.find(params[:profile_id])
+    @user_profile = current_user.profile
+
+    order = Order.new(order_params)
+    order.status = 'purchase_request'
+    if order.save
     else
-      fail # need to manage errors
+      fail # need to manage errors and should redirect to new_order
     end
     redirect_to profile_path(params[:profile_id])
   end
 
   def edit
+    @order = Order.find(params[:id])
   end
 
   def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to profile_orders_path(params[:profile_id]) #List of orders
   end
 
   def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to profile_orders_path(params[:profile_id]) #List of orders
   end
 
   private
-
-  def find_artist_profile
-    @artist_profile = Profile.find(params[:profile_id])
-  end
 
   def order_params
     # *Strong params*: You need to *whitelist* what

@@ -43,7 +43,16 @@
                 <td><%= order.user.profile.firstname + ' ' + order.user.profile.lastname %></td>
                 <td><%= order.product.name %></td>
                 <td><%= order.product.price.to_s + ' €' %></td>
-                <td> Buttons Edit order and Next_process_step to add for the artist</td>
+                <td>
+                  <div class="btn-list m-b-35">
+                    <%= link_to "Edit", edit_profile_order_path(order.artist.profile, order), class: "btn btn-xs btn-dark" %>
+                  </div>
+                  <div class="btn-list m-b-35">
+                    <%= link_to "Delete", profile_order_path(order.artist.profile, order), class: "btn btn-xs btn-danger",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                  </div>
+                </td>
               </tr>
             <% end %>
           </tbody>
