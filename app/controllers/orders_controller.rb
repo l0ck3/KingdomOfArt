@@ -12,9 +12,14 @@ class OrdersController < ApplicationController
 
   def new
     @artist_profile = Profile.find(params[:profile_id])
+    order_artist_user = @artist_profile.user
+    order_product = Product.find(params[:order][:product_id])
+
     @order = Order.new
-    @order_artist_user = @artist_profile.user
-    @order_product = Product.where(user_id: @order_artist_user.id)
+    @order.artist = order_artist_user
+    @order.user = current_user
+    @order.product = order_product
+    @order.status = 'purchase_request'
   end
 
   def create
@@ -22,7 +27,8 @@ class OrdersController < ApplicationController
     @user_profile = current_user.profile
 
     order = Order.new(order_params)
-    order.status = 'purchase_request'
+    order.artist = @artist_profile.user
+    order.user = current_user
     if order.save
     else
       fail # need to manage errors and should redirect to new_order
