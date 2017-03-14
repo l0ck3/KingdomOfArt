@@ -1,0 +1,108 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">Create your new profile</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+  <!-- LOGIN -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+          <h4 class="text-center m-b-30">Create your new profile</h4>
+
+          <%= form_for(@profile, url: profiles_path(@profile)) do |f| %>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'First name' %>
+              <%= f.text_field :firstname, autofocus: true, :placeholder => "Michel", :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Last name' %>
+              <%= f.text_field :lastname, autofocus: true, :placeholder => "Dupont", :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Birth date' %>
+              <%= f.datetime_field :birth_date, autofocus: true, :placeholder => @profile.biography, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label>Your Picture</label>
+              <%= image_tag(@profile.picture) if @profile.picture? %>
+              <%= f.file_field :picture, :class => "btn btn-block btn-round btn-base" %>
+              <%= f.hidden_field :picture_cache %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Address' %>
+              <%= f.text_field :address, autofocus: true, :placeholder => @profile.address, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'City' %>
+              <%= f.text_field :city, autofocus: true, :placeholder => @profile.city, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Country' %>
+              <%= f.text_field :country, autofocus: true, :placeholder => @profile.country, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <%= f.label 'Artist? Check the box' %>
+              <div >
+              <%= f.radio_button :profile_type, "artist", :value => true, :class => "form-control input-lg" , :id => "hugo"%>
+              </div>
+            </div>
+
+            <div id="p">
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-block btn-round btn-base">Créer</button>
+            </div>
+          <% end %>
+
+        </div>
+      </div><!-- .row -->
+
+    </div>
+  </section>
+  <!-- END LOGIN -->
+</div>
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $(function(){
+
+    $("#hugo").click(function(event) {
+    $('#p').html('<div class="col-md-12 form-group"><label for="profile_Biography">Biography</label><textarea autofocus="autofocus" class="form-control input-lg" cols="10" rows="10" name="profile[biography]" id="profile_biography"></textarea></div><div class="col-md-12 form-group"><label for="profile_Universe name">Universe name</label><input autofocus="autofocus" class="form-control input-lg" type="text" name="profile[universe_name]" id="profile_universe_name"><span style="opacity: 1; background-size: 19px 13px; left: 713px; top: 47px; width: 19px; min-width: 19px; height: 13px; position: absolute; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAANCAYAAABLjFUnAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarZG9SsNQGIaf04qCQxAJbsLBQVzEn61j0pYiONQokmRrkkMVbXI4Of508ia8CAcXR0HvoOIgOHkJboI4ODgECU4i+EzP9w4vL3zQWPE6frcxB6PcmqDnyzCK5cwj0zQBYJCW2uv3twHyIlf8RMD7MwLgadXr+F3+xmyqjQU+gc1MlSmIdSA7s9qCuATc5EhbEFeAa/aCNog7wBlWPgGcpPIXwDFhFIN4BdxhGMXQAHCTyl3AtercArQLPTaHwwMrN1qtlvSyIlFyd1xaNSrlVp4WRhdmYFUGVPuq3Z7Wx0oGPZ//JYxiWdnbDgIQC5M6q0lPzOn3D8TD73fdMb4HL4Cp2zrb/4DrNVhs1tnyEsxfwI3+AvOlUD7FY+VVAAAAIGNIUk0AAHolAACAgwAA9CUAAITRAABtXwAA6GwAADyLAAAbWIPnB3gAAAECSURBVHjapNK9K8UBFIfxD12im8LEYLgZjcpgUFgUCUlZTJRkMpqUxR+hDFIGhWwGwy0MFiUxSCbZ5DXiYjnqdvvpvnim0+mcZ/ieU9U6tySBNEbQjBpMoANZnGIdl4VLKcm8YCPqbgzhAT1ox1mSrFpxjtCHLdygH5tJgymlMYhhtKH+r6FishYsYBpN0dvFHu5wi9okWToC/0AmcpqM+pd7PKMRDajDNb5xlS97Qyem0BsL8IT9uOAhXpGLvL/wGXO5fFkOO7FwHvJtLOOilGALM8vE1d6xiFVlkP8aXTjAI8bKFeXLBuJ3shjFiQpIYR6zWMFaXFOlsnHM4Ng/+RkAdVE2mEeC7WYAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-position: 0px 0px; border: none; display: inline; visibility: visible; z-index: auto;"></span></div><div class="col-md-12 form-group"><label>Universe Picture</label><input class="btn btn-block btn-round btn-base" type="file" name="profile[universe_picture]" id="profile_universe_picture"><input type="hidden" name="profile[universe_picture_cache]" id="profile_universe_picture_cache"></div>');
+});
+
+
+
+
+    });
+  <% end %>
+<% end %>

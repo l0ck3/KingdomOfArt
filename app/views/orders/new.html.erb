@@ -1,0 +1,56 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">Interested by this product?</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+  <!-- LOGIN -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+          <h4 class="text-center m-b-30">You are interested by a product made by <%= @artist_profile.firstname %></h4>
+
+          <%= form_for([@artist_profile, @order], url: profile_orders_path(@artist_profile, @order)) do |f| %>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Product' %>
+              <%= f.collection_select(:product_id, @order_product, :id, :name, class: "form-control input-lg") %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <%= f.hidden_field :status, value: 'purchase_request' %>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-block btn-round btn-base">Validate the order</button>
+            </div>
+          <% end %>
+
+        </div>
+      </div><!-- .row -->
+
+    </div>
+  </section>
+  <!-- END LOGIN -->
+</div>
