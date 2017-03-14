@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :edit, :update] do
     resources :orders, only: [:index, :new, :create, :edit, :update, :destroy]
   end
-
+  resources :products, only: [:new, :create, :edit, :update, :destroy]
   root to: 'pages#index'
 end
