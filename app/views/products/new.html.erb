@@ -24,7 +24,7 @@
                 <p><img src="assets/images/slider/2.jpg" alt=""></p>
                 <p>Insert here a picture of your product</p>
                 <%= form_for(@product, url: products_path(@product)) do |f| %>
-                  <div class="col-md-12 form-group">
+                  <div class="col-md-6 form-group">
                     <label>Your Product Picture</label>
                     <%= image_tag(@product.picture) if @product.picture? %>
                     <%= f.file_field :picture, :class => "btn btn-block btn-round btn-base" %>
@@ -135,6 +135,8 @@
           <a href="#" class="btn btn-lg btn-block btn-round btn-base">Edit Cart</a>
         </div>
       </div>
+
+      <%= link_to « Découvrez tous les produits», profile_path(id :profile.id)%>
 
     </div>
   </div>
