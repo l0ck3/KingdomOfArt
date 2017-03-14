@@ -18,8 +18,3 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
 end
-
-# INSERER CLOUDINARY POUR POUVOIR TELECHARGER L'IMAGE
-
-
-
