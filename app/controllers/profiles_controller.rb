@@ -23,6 +23,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @products = Product.where(user_id: @profile.user)
+
   end
 
   def update

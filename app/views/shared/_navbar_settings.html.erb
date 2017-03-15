@@ -1,0 +1,34 @@
+<ul class="nav-text-tabs">
+  <% if page == "profiles/edit" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+  <a href="" class="active">Profile </a>
+  </li>
+  <% if page == "user/edit" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+  <a href="">User </a>
+  </li>
+  <% if @profile.profile_type == 'artist' %>
+    <% if page == "products/edit" %>
+      <li class="active">
+    <% else %>
+    <li>
+    <% end %>
+    <a href="">Products </a>
+    </li>
+  <% else %>
+    <% if page == "orders/edit" %>
+      <li class="active">
+    <% else %>
+    <li>
+    <% end %>
+    <a href="">Orders </a>
+    </li>
+  <% end %>
+</ul>
+<br>
