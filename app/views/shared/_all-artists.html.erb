@@ -8,7 +8,7 @@
             <div class="work-overlay">
               <div class="work-caption">
                 <h6 class="work-title"><%= profile.universe_name %></h6>
-                <span class="work-category"><%= profile.firstname + " " + profile.lastname %></span>
+                <span class="work-category"><%= profile.firstname.capitalize + " " + profile.lastname.capitalize %></span>
               </div>
             </div>
             <%= link_to profile_path(profile), :class => "work-link" do %>
