@@ -23,17 +23,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @artist_profile = Profile.find(params[:profile_id])
-    @user_profile = current_user.profile
+    artist_profile = Profile.find(params[:profile_id])
 
     order = Order.new(order_params)
-    order.artist = @artist_profile.user
+    order.artist = artist_profile.user
     order.user = current_user
-    if order.save
+    if order.save!
+      redirect_to profile_path(params[:profile_id])
     else
-      fail # need to manage errors and should redirect to new_order
+      render :new
     end
-    redirect_to profile_path(params[:profile_id])
   end
 
   def edit
