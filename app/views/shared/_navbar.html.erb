@@ -11,34 +11,33 @@
         </li>
         <!-- END FEATURES -->
         <!-- SHORTCODES: MEGA MENU -->
-        <li class="has-submenu">
-          <a href="#">Messages</a>
-        </li>
+
         <li class="has-submenu">
           <% if current_user %>
-        <div class="menu-item">
-          <div class="extras-login">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navbar-kingdom-item navbar-kingdom-button btn sign-up-link" %>
-        <% else %>
-            <%= link_to "Sign up / Log in", new_user_session_path, class: "
-            navbar-kingdom-item navbar-kingdom-button btn sign-up-link" %>
-          </div>
-        </div>
+            <!-- USER MENU -->
+            <li class="has-submenu">
+              <a href="#"><%= current_user.profile.firstname %></a>
+              <ul class="submenu">
+                <% if current_user && current_user.profile != nil%>
+                  <li><%= link_to "Your Profile", profile_path(current_user.profile) %></li>
+                  <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>
+                <% end %>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
+              </ul>
+            </li>
+          <!-- END USER MENU -->
+          <% else %>
+            <li class="has-submenu">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li class="has-submenu">
+              <%= link_to "Log in", new_user_session_path %>
+            </li>
         <% end %>
+            <li class="has-submenu">
+              <a href="/">Contact</a>
+            </li>
         </li>
-        <li class="menu-item">
-           <% if current_user && current_user.profile != nil%>
-
-            <%= link_to profile_path(current_user.profile), class: "navbar-kingdom-item navbar-kingdom-link" do %>
-            <div class="navbadge-container">
-              <i class="fa fa-envelope-o"></i>
-              <%= current_user.profile.lastname %>
-            </div>
-            <% end %>
-            <% end %>
-        </li>
-
-
 
         <!-- END SHORTCODES: MEGA MENU -->
         <!-- User logged?<--></-->
