@@ -2,12 +2,21 @@ class ProductsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:profiles], except: [:index]
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def new
     @product = Product.new
   end
 
   def create
-    product.save(product_params)
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,7 +32,7 @@ class ProductsController < ApplicationController
     product.destroy
   end
 
-private
+  private
 
   def find_product
     @product = Product.find(params[:id])
