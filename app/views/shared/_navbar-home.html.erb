@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<header class="header header-fixed header-transparent">
+<header class="header home header-fixed header-transparent">
 
     <!-- MAIN MENU -->
     <nav id="custom-collapse" class="main-nav collapse clearfix">
@@ -7,7 +7,7 @@
 
         <!-- HOME -->
         <li class="has-submenu">
-          <a href="/" class="color-black">Home</a>
+          <a href="/">Home</a>
         </li>
         <!-- END FEATURES -->
         <!-- SHORTCODES: MEGA MENU -->
@@ -16,8 +16,8 @@
           <% if current_user %>
             <!-- USER MENU -->
             <li class="has-submenu">
-              <a href="#" class="color-black"><%= current_user.profile.firstname %></a>
-              <ul class="submenu ">
+              <a href="#"><%= current_user.profile.firstname %></a>
+              <ul class="submenu">
                 <% if current_user && current_user.profile != nil%>
                   <li><%= link_to "Your Profile", profile_path(current_user.profile) %></li>
                   <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>
@@ -27,14 +27,14 @@
             </li>
           <!-- END USER MENU -->
           <% else %>
-            <li class="has-submenu color-black">
+            <li class="has-submenu">
               <%= link_to "Sign up", new_user_registration_path %>
             </li>
-            <li class="has-submenu color-black">
+            <li class="has-submenu">
               <%= link_to "Log in", new_user_session_path %>
             </li>
         <% end %>
-            <li class="has-submenu color-black">
+            <li class="has-submenu">
               <a href="/">Contact</a>
             </li>
         </li>
