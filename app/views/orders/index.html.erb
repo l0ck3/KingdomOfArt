@@ -12,9 +12,7 @@
 
       <div class="row">
         <div class="col-sm-12 text-center">
-
-          <h3 class="montserrat text-uppercase m-b-10">List of your orders</h3>
-
+          <h3 class="montserrat text-uppercase m-b-10">Settings</h3>
         </div>
       </div>
 
@@ -25,8 +23,9 @@
 <section class="module">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <h5 class="montserrat text-uppercase bottom-line">Currents orders</h5>
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= render "shared/tabs", page: 'orders/edit' %>
+        </br>
         <table class="table">
           <tr>
             <th>Artist</th>
@@ -46,12 +45,11 @@
                 <td>
                   <div class="btn-list m-b-35">
                     <%= link_to "Edit", edit_profile_order_path(order.artist.profile, order), class: "btn btn-xs btn-dark" %>
-                  </div>
-                  <div class="btn-list m-b-35">
                     <%= link_to "Delete", profile_order_path(order.artist.profile, order), class: "btn btn-xs btn-danger",
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
-                  </div>
+                    <%= link_to "Validate", edit_profile_order_path(order.artist.profile, order), class: "btn btn-xs btn-base" %>
+                    </div>
                 </td>
               </tr>
             <% end %>

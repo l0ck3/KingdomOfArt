@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   layout "lvl4_layout", only: [ :new, :edit, :index ]
 
   def index
-    artist_profile = Profile.find(params[:profile_id])
-    @order_artist_user = User.find(artist_profile.user)
+    @artist_profile = Profile.find(params[:profile_id])
+    @order_artist_user = User.find(@artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
   end
 
