@@ -130,7 +130,7 @@
     </div><!-- .row -->
   </section>
   
-  <% if @profile.profile_type == 'artist' && current_user.products.present? %>
+  <% if @profile.profile_type == 'artist' %>
     <%= render "shared/all-products" %>
   <% end %>
 </div>
