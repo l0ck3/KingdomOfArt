@@ -1,0 +1,63 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3 class="montserrat text-uppercase m-b-10">Settings</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= render "shared/tabs", page: 'orders/edit' %>
+        </br>
+        <table class="table">
+          <tr>
+            <th>Status</th>
+            <th>Artist</th>
+            <th>Client</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.status %></td>
+                <td><%= order.artist.profile.firstname + ' ' + order.artist.profile.lastname %></td>
+                <td><%= order.user.profile.firstname + ' ' + order.user.profile.lastname %></td>
+                <td><%= order.product.name %></td>
+                <td><%= order.product.price.to_s + ' €' %></td>
+                <td>
+                  <div class="btn-list m-b-35">
+                    <%= link_to "Edit", edit_profile_order_path(order.artist.profile, order), class: "label label-default" %>
+                    <%= link_to "Delete", profile_order_path(order.artist.profile, order), class: "label label-danger",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                    <%= link_to "Validate", edit_profile_order_path(order.artist.profile, order), class: "label label-base" %>
+                    </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

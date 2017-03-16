@@ -1,16 +1,57 @@
-<h2>Forgot your password?</h2>
+<% content_for :title_tag do %>Brainless<% end %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
   </div>
+  <!-- END PRELOADER -->
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+<div class="wrapper">
 
-<%= render "devise/shared/links" %>
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">Forgot your password?</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+  <!-- LOGIN -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+
+          <h4 class="text-center m-b-30">No problem</h4>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="form-group">
+              <label class="sr-only">Email</label>
+              <%= f.email_field :email, autofocus: true, :placeholder => "Email", :class => "form-control input-lg" %>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-block btn-round btn-base">Send me reset password instructions</button>
+            </div>
+
+            <%= render "devise/shared/links" %>
+
+          <% end %>
+
+        </div>
+      </div><!-- .row -->
+
+    </div>
+  </section>
+  <!-- END LOGIN -->
+</div>

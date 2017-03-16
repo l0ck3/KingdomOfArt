@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="../theme/assets/images/apple-touch-icon-114x114.png">
 
     <!-- Web Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap core CSS -->
@@ -49,12 +49,13 @@
 
       <!-- JAVASCRIPT FILES -->
       <script src="../theme/assets/js/jquery-2.2.3.min.js"></script>
-      <script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
       <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
       <script src="../theme/assets/bootstrap/js/bootstrap.min.js"></script>
       <script src="../theme/assets/js/plugins.min.js"></script>
       <script src="../theme/assets/js/custom.min.js"></script>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= yield(:js) %>
   </body>
 
 </html>

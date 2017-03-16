@@ -1,0 +1,46 @@
+<ul class="nav-text-tabs">
+
+  <!-- PROFILE TAB -->
+  <% if page == "profiles/edit" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+  <%= link_to "Profile", edit_profile_path(current_user.profile) %>
+  </li>
+  <!-- END PROFILE TAB -->
+
+  <!-- USER TAB -->
+  <% if page == "user/edit" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+  <%= link_to "User", edit_user_registration_path(current_user) %>
+  </li>
+  <!-- END USER TAB -->
+
+  <!-- PRODUCTS TAB if Artist only -->
+  <% if current_user.profile.profile_type == 'artist' %>
+    <% if page == "products/edit" %>
+      <li class="active">
+    <% else %>
+      <li>
+    <% end %>
+    <%= link_to "Products", edit_profile_path(current_user.profile) %>
+    </li>
+  <% end %>
+  <!-- END PRODUCTS TAB -->
+
+  <!-- ORDERS TAB -->
+  <% if page == "orders/edit" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+  <%= link_to "Orders", profile_orders_path(current_user.profile) %>
+  </li>
+  <!-- END ORDERS TAB -->
+
+</ul>
+<br>
