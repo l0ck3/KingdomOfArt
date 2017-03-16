@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   def to_s
      email
