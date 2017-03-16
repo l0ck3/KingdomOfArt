@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :find_profile, only: [:show, :edit, :update]
+  before_action :find_profile, only: [:new, :show, :edit, :update]
   layout "profile_edit", only: [ :edit ]
 
   def show
@@ -10,33 +10,36 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = Profile.new
+
   end
 
-  def create
-    @profile = Profile.create(profile_params)
-    if @profile.profile_type == nil
-      @profile.profile_type = "client"
-    end
-    @profile.save
-    redirect_to profile_path(@profile)
-  end
+  # def create
+  #   if @profile.profile_type == nil
+  #     @profile.profile_type = "client"
+  #   end
+  #   @profile.update_attributes(profile_params)
+  #   fail
+  #   redirect_to profiles_path
+  # end
 
   def edit
     @products = Product.where(user_id: @profile.user)
-
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    if @profile.profile_type == nil
+      @profile.profile_type = "client"
+    end
     @profile.update(profile_params)
-    redirect_to profile_path(@profile) # Show
+    @profile.save
+
+    redirect_to root_path # Go bak to home page
   end
 
   private
 
   def find_profile
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
   end
 
   def profile_params

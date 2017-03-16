@@ -16,11 +16,11 @@
           <% if current_user %>
             <!-- USER MENU -->
             <li class="has-submenu">
-              <a href="#"><%= current_user.profile.firstname %></a>
+              <a href="#"><%= current_user.profile.navbar_id %></a>
               <ul class="submenu">
-                <% if current_user && current_user.profile != nil%>
-                  <li><%= link_to "Your Profile", profile_path(current_user.profile) %></li>
-                  <li><%= link_to "Edit Profile", edit_profile_path(current_user.profile) %></li>
+                <% if current_user%>
+                  <li><%= link_to "Your Profile", profiles_path %></li>
+                  <li><%= link_to "Edit Profile", edit_profiles_path %></li>
                 <% end %>
                 <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
               </ul>

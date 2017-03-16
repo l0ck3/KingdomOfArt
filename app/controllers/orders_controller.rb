@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   layout "lvl4_layout", only: [ :new, :edit, :index ]
 
   def index
-    @artist_profile = Profile.find(params[:profile_id])
+    @artist_profile = current_user.profile
     @order_artist_user = User.find(@artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
   end
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @artist_profile = Profile.find(params[:profile_id])
+    @artist_profile = current_user.profile
     order_artist_user = @artist_profile.user
     order_product = Product.find(params[:order][:product_id])
 
@@ -23,13 +23,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    artist_profile = Profile.find(params[:profile_id])
+    artist_profile = current_user.profile
 
     order = Order.new(order_params)
     order.artist = artist_profile.user
     order.user = current_user
     if order.save!
-      redirect_to profile_path(params[:profile_id])
+      redirect_to
+
+profiles_path(params[:profile_id])
     else
       render :new
     end
