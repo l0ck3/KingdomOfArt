@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308111207) do
+ActiveRecord::Schema.define(version: 20170315215218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,12 @@ ActiveRecord::Schema.define(version: 20170308111207) do
     t.string   "offer_title"
     t.text     "offer_body"
     t.float    "offer_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "product_sku"
+    t.string   "amount_currency", default: "EUR", null: false
+    t.json     "payment"
+    t.integer  "amount_cents",    default: 0,     null: false
     t.index ["product_id"], name: "index_orders_on_product_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -47,10 +51,12 @@ ActiveRecord::Schema.define(version: 20170308111207) do
     t.string   "name"
     t.text     "description"
     t.string   "picture"
-    t.float    "price"
+    t.float    "old_price"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "sku"
+    t.integer  "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
@@ -69,6 +75,8 @@ ActiveRecord::Schema.define(version: 20170308111207) do
     t.datetime "updated_at",       null: false
     t.string   "universe_name"
     t.string   "universe_picture"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

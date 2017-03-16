@@ -9,7 +9,9 @@ form do |f|
       f.input :name
       f.input :description
       f.input :picture
-      f.input :price
+      f.input :old_price
+      f.input :price_cents
+      f.input :sku
     end
 
     f.inputs "Links" do
@@ -19,12 +21,14 @@ form do |f|
     f.actions
   end
 
-permit_params :name, :description, :picture, :price, :user_id
+permit_params :name, :description, :picture, :old_price, :user_id, :sku, :price_cents
 
 index do
   id_column
   column :name
+  column :sku
   column :picture
+  column :price_cents
   actions
 end
 #
