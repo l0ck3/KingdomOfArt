@@ -14,7 +14,7 @@
             <%= cl_image_tag product.picture %>
             <div class="work-overlay">
               <div class="work-caption">
-                <h6 class="work-title"><%= product.name + " | " + product.price.to_s + ' €'%> </h6>
+                <h6 class="work-title"><%= product.name + " | " + humanized_money_with_symbol(product.price) %> </h6>
                 <span class="work-category"><%= product.description%></span>
 
                   <%= form_for([@profile, @order], url: new_profile_order_path(@profile, @order),method: :get) do |f| %>

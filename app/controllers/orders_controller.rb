@@ -19,6 +19,8 @@ class OrdersController < ApplicationController
     @order.artist = order_artist_user
     @order.user = current_user
     @order.product = order_product
+    @order.product_sku = order_product.sku
+    @order.amount_cents = order_product.price_cents
     @order.status = 'purchase_request'
   end
 
@@ -29,9 +31,7 @@ class OrdersController < ApplicationController
     order.artist = artist_profile.user
     order.user = current_user
     if order.save!
-      redirect_to
-
-profiles_path(params[:profile_id])
+      redirect_to new_profiles_order_payment_path(order_id: order.id)
     else
       render :new
     end
@@ -44,13 +44,13 @@ profiles_path(params[:profile_id])
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to profile_orders_path(params[:profile_id]) #List of orders
+    redirect_to profiles_orders_path #List of orders
   end
 
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    redirect_to profile_orders_path(params[:profile_id]) #List of orders
+    redirect_to profiles_orders_path #List of orders
   end
 
   private
@@ -59,6 +59,6 @@ profiles_path(params[:profile_id])
     # *Strong params*: You need to *whitelist* what
     # can be updated by the user
     # Never trust user data!
-    params.require(:order).permit(:status, :product_id, :offer_title, :offer_body, :offer_price)
+    params.require(:order).permit(:status, :product_id, :offer_title, :offer_body, :offer_price, :amount_cents, :product_sku)
   end
 end
