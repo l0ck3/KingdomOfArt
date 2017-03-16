@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   layout "lvl4_layout", only: [ :new, :edit, :index ]
 
   def index
-    @artist_profile = Profile.find(params[:profile_id])
+    @artist_profile = current_user.profile
     @order_artist_user = User.find(@artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
   end
@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @artist_profile = Profile.find(params[:profile_id])
+    @artist_profile = current_user.profile
     order_artist_user = @artist_profile.user
     order_product = Product.find(params[:order][:product_id])
 
@@ -25,14 +25,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    artist_profile = Profile.find(params[:profile_id])
+    artist_profile = current_user.profile
 
     order = Order.new(order_params)
     order.artist = artist_profile.user
     order.user = current_user
     if order.save!
-      #redirect_to profile_path(params[:profile_id]) #old redirect
-      redirect_to new_profile_order_payment_path(profile_id: order.artist.profile, order_id: order.id)
+      redirect_to new_profiles_order_payment_path(order_id: order.id)
     else
       render :new
     end
@@ -45,13 +44,13 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to profile_orders_path(params[:profile_id]) #List of orders
+    redirect_to profiles_orders_path #List of orders
   end
 
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    redirect_to profile_orders_path(params[:profile_id]) #List of orders
+    redirect_to profiles_orders_path #List of orders
   end
 
   private

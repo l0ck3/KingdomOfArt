@@ -24,33 +24,30 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
-        <%= render "shared/tabs", page: 'orders/edit' %>
+        <%= render "shared/tabs", page: 'products/edit' %>
         </br>
         <table class="table">
           <tr>
-            <th>Status</th>
-            <th>Artist</th>
-            <th>Client</th>
+            <th>Picture</th>
             <th>Product</th>
             <th>Price</th>
+            <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
           <tbody>
-            <% @orders.each do |order| %>
+            <% @products.each do |product| %>
               <tr>
-                <td><%= order.status %></td>
-                <td><%= order.artist.profile.firstname + ' ' + order.artist.profile.lastname %></td>
-                <td><%= order.user.profile.firstname + ' ' + order.user.profile.lastname %></td>
-                <td><%= order.product.name %></td>
-                <td><%= humanized_money_with_symbol(order.product.price) %></td>
+                <td><%= cl_image_tag product.picture, height:50, crop:"scale" %></td>
+                <td><%= product.name %></td>
+                <td><%= product.price %></td>
+                <td><%= product.description %></td>
                 <td>
                   <div class="btn-list m-b-35">
-                    <%= link_to "Edit", edit_profiles_order_path(order.artist.profile, order), class: "label label-default" %>
-                    <%= link_to "Delete", profiles_order_path(order.artist.profile, order), class: "label label-danger",
+                    <%= link_to "Edit", edit_product_path(product), class: "label label-default" %>
+                    <%= link_to "Delete", product_path(product), class: "label label-danger",
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
-                    <%= link_to "Validate", edit_profiles_order_path(order.artist.profile, order), class: "label label-base" %>
                     </div>
                 </td>
               </tr>
@@ -59,5 +56,12 @@
         </table>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= link_to "Add a new product", new_product_path, class: "btn btn-lg btn-base" %>
+
+      </div>
+    </div>
+
   </div>
 </section>

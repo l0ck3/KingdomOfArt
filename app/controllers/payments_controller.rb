@@ -18,11 +18,11 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, status: 'paid')
-    redirect_to profile_orders_path(@order.artist.profile, @order)
+    redirect_to profiles_orders_path(@order)
 
   rescue Stripe::CardError => e
     #flash[:error] = e.message
-    redirect_to new_profile_order_payment_path(@order)
+    redirect_to new_profiles_order_payment_path(@order)
   end
 
 private
