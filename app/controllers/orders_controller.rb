@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
     @artist_profile = current_user.profile
     @order_artist_user = User.find(@artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
-
   end
 
   def show
@@ -64,6 +63,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     redirect_to profiles_orders_path #List of orders
+  end
+
+  def update_deliver
+    @order = Order.find(params[:id])
+    @order.status = 'delivered'
+    @order.save!
+    redirect_to orders_path #List of orders
   end
 
   def destroy

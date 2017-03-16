@@ -46,11 +46,9 @@
                 <td><%= humanized_money_with_symbol(order.product.price) %></td>
                 <td>
                   <div class="btn-list m-b-35">
-                    <%= link_to "Edit", edit_order_path(order), class: "label label-default" %>
-                    <%= link_to "Delete", order_path(order), class: "label label-danger",
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-                    <%= link_to "Validate", edit_order_path(order), class: "label label-base" %>
+                    <% if order.status == 'paid' && current_user.profile.profile_type == 'artist' %>
+                      <%= link_to "Deliver", deliver_path(order), class:"btn btn-xs btn-base" %>
+                    <% end %>
                     </div>
                 </td>
               </tr>
