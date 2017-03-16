@@ -31,7 +31,7 @@
 
           <h4 class="text-center m-b-30">Edit your product</h4>
 
-          <%= form_for(@product, url: edit_product_path) do |f| %>
+          <%= form_for(@product, url: product_path(@product)) do |f| %>
 
             <div class="col-md-12 form-group">
               <%= f.label 'Name' %>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="col-md-12 form-group">
-              <button class="btn btn-block btn-round btn-base">Edit</button>
+              <button class="btn btn-block btn-round btn-base">Update</button>
             </div>
 
             <% end %>

@@ -1,0 +1,67 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3 class="montserrat text-uppercase m-b-10">Settings</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= render "shared/tabs", page: 'products/edit' %>
+        </br>
+        <table class="table">
+          <tr>
+            <th>Picture</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= cl_image_tag product.picture, height:50, crop:"scale" %></td>
+                <td><%= product.name %></td>
+                <td><%= product.price %></td>
+                <td><%= product.description %></td>
+                <td>
+                  <div class="btn-list m-b-35">
+                    <%= link_to "Edit", edit_product_path(product), class: "label label-default" %>
+                    <%= link_to "Delete", product_path(product), class: "label label-danger",
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+                    </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= link_to "Add a new product", new_product_path, class: "btn btn-lg btn-base" %>
+
+      </div>
+    </div>
+
+  </div>
+</section>
