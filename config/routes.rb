@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   root to: 'pages#index'
+
+  get '/deliver/:id', to: 'orders#update_deliver', as: 'deliver'
+
 end
