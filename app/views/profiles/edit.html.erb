@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-sm-12 text-center">
 
-          <h3 class="montserrat text-uppercase m-b-10">Settings</h3>
+          <h3 class="montserrat text-uppercase m-b-10">Personal information</h3>
 
         </div>
       </div>
@@ -47,24 +47,7 @@
 
             <div class="col-md-6 form-group">
               <%= f.label 'Birth date' %>
-              <%= f.datetime_field :birth_date, autofocus: true, :placeholder => @profile.biography, :class => "form-control input-lg" %>
-            </div>
-
-            <div class="col-md-6 form-group">
-              <%= f.label 'artist or client' %>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="profile[profile_type]" id="client" value="client" <%= 'checked' if @profile.profile_type == 'client' %>>
-                  Client
-                </label>
-              </div>
-
-              <div class="radio">
-                <label>
-                  <input type="radio" name="profile[profile_type]" id="artist" value="artist" <%= 'checked' if @profile.profile_type == 'artist' %>>
-                  Artist
-                </label>
-              </div>
+              <%= f.datetime_field :birth_date, autofocus: true, value: l(@profile.birth_date) ,:placeholder => @profile.biography, :class => "form-control input-lg" %>
             </div>
 
             <div class="col-md-12 form-group">

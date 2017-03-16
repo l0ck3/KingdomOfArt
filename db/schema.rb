@@ -75,8 +75,6 @@ ActiveRecord::Schema.define(version: 20170315215218) do
     t.datetime "updated_at",       null: false
     t.string   "universe_name"
     t.string   "universe_picture"
-    t.float    "latitude"
-    t.float    "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
