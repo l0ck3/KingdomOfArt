@@ -69,7 +69,7 @@
                 <p><strong>Birthday:</strong></p>   
               </div>
               <div class="col-sm-9">
-                <p><%= l @profile.birth_date %></p>
+                <p><%= l(@profile.birth_date) if @profile.birth_date %></p>
               </div>
             </div>
 
