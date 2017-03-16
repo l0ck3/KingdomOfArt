@@ -71,13 +71,35 @@
             </div>
 
             <div class="col-md-6 form-group">
-              <%= f.label 'Artist? Check the box' %>
-              <div >
-              <%= f.radio_button :profile_type, "artist", :value => true, :class => "form-control input-lg" , :id => "hugo"%>
+              <%= f.label 'Select your profile type' %>
+              <div>
+                
+                <%= f.label 'Client' %>
+                <%= f.radio_button :profile_type, "client", id: 'client', checked: true %>
+                &nbsp;&nbsp;
+                <%= f.label 'Artist' %>
+                <%= f.radio_button :profile_type, "artist", id: 'artist' %>
+<!--                 <%= f.select :profile_type do %>
+                  <%= options_for_select({Artist: :artist, Client: :client}) %>
+                <% end %> -->
               </div>
             </div>
 
-            <div id="p">
+            <div id="artist_information" style="display: none">
+              <div class="col-md-12 form-group">
+                <label for="profile_Biography">Biography</label>
+                <textarea autofocus="autofocus" class="form-control input-lg" cols="10" rows="10" name="profile[biography]" id="profile_biography"></textarea>
+              </div>
+              <div class="col-md-12 form-group">
+                <label for="profile_Universe name">Universe name</label>
+                <input autofocus="autofocus" class="form-control input-lg" type="text" name="profile[universe_name]" id="profile_universe_name">
+                <span style="opacity: 1; background-size: 19px 13px; left: 713px; top: 47px; width: 19px; min-width: 19px; height: 13px; position: absolute; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAANCAYAAABLjFUnAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarZG9SsNQGIaf04qCQxAJbsLBQVzEn61j0pYiONQokmRrkkMVbXI4Of508ia8CAcXR0HvoOIgOHkJboI4ODgECU4i+EzP9w4vL3zQWPE6frcxB6PcmqDnyzCK5cwj0zQBYJCW2uv3twHyIlf8RMD7MwLgadXr+F3+xmyqjQU+gc1MlSmIdSA7s9qCuATc5EhbEFeAa/aCNog7wBlWPgGcpPIXwDFhFIN4BdxhGMXQAHCTyl3AtercArQLPTaHwwMrN1qtlvSyIlFyd1xaNSrlVp4WRhdmYFUGVPuq3Z7Wx0oGPZ//JYxiWdnbDgIQC5M6q0lPzOn3D8TD73fdMb4HL4Cp2zrb/4DrNVhs1tnyEsxfwI3+AvOlUD7FY+VVAAAAIGNIUk0AAHolAACAgwAA9CUAAITRAABtXwAA6GwAADyLAAAbWIPnB3gAAAECSURBVHjapNK9K8UBFIfxD12im8LEYLgZjcpgUFgUCUlZTJRkMpqUxR+hDFIGhWwGwy0MFiUxSCbZ5DXiYjnqdvvpvnim0+mcZ/ieU9U6tySBNEbQjBpMoANZnGIdl4VLKcm8YCPqbgzhAT1ox1mSrFpxjtCHLdygH5tJgymlMYhhtKH+r6FishYsYBpN0dvFHu5wi9okWToC/0AmcpqM+pd7PKMRDajDNb5xlS97Qyem0BsL8IT9uOAhXpGLvL/wGXO5fFkOO7FwHvJtLOOilGALM8vE1d6xiFVlkP8aXTjAI8bKFeXLBuJ3shjFiQpIYR6zWMFaXFOlsnHM4Ng/+RkAdVE2mEeC7WYAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-position: 0px 0px; border: none; display: inline; visibility: visible; z-index: auto;">                  
+                </span>
+              </div>
+              <div class="col-md-12 form-group">
+                <label>Universe Picture</label>
+                <input class="btn btn-block btn-round btn-base" type="file" name="profile[universe_picture]" id="profile_universe_picture"><input type="hidden" name="profile[universe_picture_cache]" id="profile_universe_picture_cache">
+              </div>          
             </div>
 
             <div class="form-group">
@@ -94,15 +116,15 @@
 </div>
 <% content_for(:js) do %>
   <%= javascript_tag do %>
-    $(function(){
+    $(function() {
 
-    $("#hugo").click(function(event) {
-    $('#p').html('<div class="col-md-12 form-group"><label for="profile_Biography">Biography</label><textarea autofocus="autofocus" class="form-control input-lg" cols="10" rows="10" name="profile[biography]" id="profile_biography"></textarea></div><div class="col-md-12 form-group"><label for="profile_Universe name">Universe name</label><input autofocus="autofocus" class="form-control input-lg" type="text" name="profile[universe_name]" id="profile_universe_name"><span style="opacity: 1; background-size: 19px 13px; left: 713px; top: 47px; width: 19px; min-width: 19px; height: 13px; position: absolute; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAANCAYAAABLjFUnAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarZG9SsNQGIaf04qCQxAJbsLBQVzEn61j0pYiONQokmRrkkMVbXI4Of508ia8CAcXR0HvoOIgOHkJboI4ODgECU4i+EzP9w4vL3zQWPE6frcxB6PcmqDnyzCK5cwj0zQBYJCW2uv3twHyIlf8RMD7MwLgadXr+F3+xmyqjQU+gc1MlSmIdSA7s9qCuATc5EhbEFeAa/aCNog7wBlWPgGcpPIXwDFhFIN4BdxhGMXQAHCTyl3AtercArQLPTaHwwMrN1qtlvSyIlFyd1xaNSrlVp4WRhdmYFUGVPuq3Z7Wx0oGPZ//JYxiWdnbDgIQC5M6q0lPzOn3D8TD73fdMb4HL4Cp2zrb/4DrNVhs1tnyEsxfwI3+AvOlUD7FY+VVAAAAIGNIUk0AAHolAACAgwAA9CUAAITRAABtXwAA6GwAADyLAAAbWIPnB3gAAAECSURBVHjapNK9K8UBFIfxD12im8LEYLgZjcpgUFgUCUlZTJRkMpqUxR+hDFIGhWwGwy0MFiUxSCbZ5DXiYjnqdvvpvnim0+mcZ/ieU9U6tySBNEbQjBpMoANZnGIdl4VLKcm8YCPqbgzhAT1ox1mSrFpxjtCHLdygH5tJgymlMYhhtKH+r6FishYsYBpN0dvFHu5wi9okWToC/0AmcpqM+pd7PKMRDajDNb5xlS97Qyem0BsL8IT9uOAhXpGLvL/wGXO5fFkOO7FwHvJtLOOilGALM8vE1d6xiFVlkP8aXTjAI8bKFeXLBuJ3shjFiQpIYR6zWMFaXFOlsnHM4Ng/+RkAdVE2mEeC7WYAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-position: 0px 0px; border: none; display: inline; visibility: visible; z-index: auto;"></span></div><div class="col-md-12 form-group"><label>Universe Picture</label><input class="btn btn-block btn-round btn-base" type="file" name="profile[universe_picture]" id="profile_universe_picture"><input type="hidden" name="profile[universe_picture_cache]" id="profile_universe_picture_cache"></div>');
-});
+      $("#client").click(function(event) {
+        $('#artist_information').fadeOut(300);
+      });
 
-
-
-
+      $("#artist").click(function(event) {
+        $('#artist_information').fadeIn(300);
+      });   
     });
   <% end %>
 <% end %>

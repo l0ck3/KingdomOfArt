@@ -1,6 +1,20 @@
 <!-- WRAPPER -->
 <div class="wrapper">
 
+<section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">Mon profil</h3>
+          <ol class="breadcrumb text-xs">
+        </div>
+      </div>
+
+    </div>
+</section>
+
 <% if @profile.profile_type == 'artist' %>
 
   <!-- HERO -->
@@ -27,18 +41,12 @@
   <!-- END HERO -->
 <% end %>
 
-  <!-- TEAM -->
-  <section class="module">
-    <div class="container">
-    <h3 class="team-name"><%= @profile.firstname.capitalize + " " + @profile.lastname.capitalize %> </h3>
-    <span class="team-role"><%= @profile.city.capitalize + " " + @profile.country %></span>
-    <span class="team-role"><%=  %></span>
-      <div class="row">
-        <!-- ARTIST -->
-        <div class="col-sm-6 col-md-3">
-          <div class="team-item m-b-sm-35">
-            <div class="team-photo">
-              <%= cl_image_tag @profile.picture %>
+<section class="module-sm divider-bottom">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <%= cl_image_tag @profile.picture %>
               <div class="team-social">
                 <div>
                   <div>
@@ -47,30 +55,82 @@
                     <a href="#"><i class="fa fa-dribbble"></i></a>
                   </div>
                 </div>
+              </div>            
+          </div>
+
+          <div class="col-sm-5">
+            <div class="product-description m-b-30">
+              <h2 class="m-b-5"><%= @profile %></h2>
+            </div>
+            <hr class="m-t-30 m-b-30">
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p><strong>Birthday:</strong></p>   
+              </div>
+              <div class="col-sm-9">
+                <p><%= l @profile.birth_date %></p>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- END ARTIST -->
 
+            <div class="row">
+              <div class="col-sm-3">
+                <p><strong>Address:</strong></p>   
+              </div>
+              <div class="col-sm-9">
+                <p><%= @profile.address %></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p><strong>City:</strong></p>   
+              </div>
+              <div class="col-sm-9">
+                <p><%= @profile.city %></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <p><strong>Country:</strong></p>   
+              </div>
+              <div class="col-sm-9">
+                <p><%= @profile.country %></p>
+              </div>
+            </div>  
+            <hr class="m-t-30 m-b-30">          
+            <div class="row">
+              <div class="col-sm-12" style="text-align: center">
+                <a href="/#universes" class="btn btn-sm btn-circle btn-dark">Discover more art</a>
+              </div>
+            </div><!-- .row -->            
+           </div>
+            <!-- END PRODUCT FORM -->
+        </div><!-- .row -->
+      </div>
+    </section>
+
+  <!-- TEAM -->
+  <section class="module">
+    <div class="container">
+      <div class="row">
         <% if @profile.profile_type == 'artist' %>
 
         <!-- BIOGRAPHY -->
-        <div class="col-sm-6 col-md-9">
-          <div class="col-sm-9 page-content">
+        <div class="col-sm-12 ">
             <h1>About me</h1>
             <p><%= @profile.biography %></p>
-          </div>
         </div>
         <!-- END BIOGRAPHY -->
 
         <% end %>
 
       </div>
-      <a href="/#universes" class="btn btn-sm btn-circle btn-dark">Discover more</a>
     </div><!-- .row -->
   </section>
-
+  
+  <% if @profile.profile_type == 'artist' && current_user.products.present? %>
+    <%= render "shared/all-products" %>
+  <% end %>
 </div>
-
-<%= render "shared/all-products" %>
