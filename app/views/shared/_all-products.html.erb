@@ -18,18 +18,6 @@
                 <span class="work-category"><%= product.description%></span>
 
                   <%= link_to 'Buy', new_order_path(product_id: product.id), class: "btn btn-block btn-round btn-dark" %>
-
-            <!--       <%= form_for(@order, url: new_order_path, method: :get) do |f| %>
-
-                    <div class="col-md-12 form-group">
-                      <%= f.hidden_field(:product_id, value: product.id) %>
-                    </div>
-
-                    <div class="form-group">
-                      <button class="btn btn-block btn-round btn-dark">Buy</button>
-                    </div>
-                  <% end %> -->
-
               </div>
             </div>
               <!-- HERE A LINK TO THE PRODUCT PAGE IF NEEDED -->
