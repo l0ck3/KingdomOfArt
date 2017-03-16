@@ -8,6 +8,11 @@ Rails.application.routes.draw do
         resources :payments, only: [:new, :create]
     end
   end
+
+  namespace :artists do
+    resources :profiles, only: :show
+  end
+
   resources :products, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   root to: 'pages#index'
 end

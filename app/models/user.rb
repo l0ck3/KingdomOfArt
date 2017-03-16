@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_create :create_profile
 
   has_one :profile, dependent: :destroy
+  has_many :products
 
   def to_s
      email

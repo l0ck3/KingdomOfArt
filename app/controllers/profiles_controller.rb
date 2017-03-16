@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def show
     @products = Product.all.select { |product| product.user == @profile.user }
-    @order = Order.new
+    #@order = Order.new
     @client_user = User.find(current_user)
     @artist_user = @profile.user
   end
