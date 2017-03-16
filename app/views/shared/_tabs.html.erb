@@ -38,7 +38,7 @@
   <% else %>
     <li>
   <% end %>
-  <%= link_to "Orders", profiles_orders_path %>
+  <%= link_to "Orders", profiles_orders_path(current_user.profile) %>
   </li>
   <!-- END ORDERS TAB -->
 
