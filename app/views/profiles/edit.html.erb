@@ -33,7 +33,7 @@
 
           <h4 class="text-center m-b-30">Update your profile</h4>
 
-          <%= form_for(@profile, url: profile_path(@profile)) do |f| %>
+          <%= form_for(@profile, url: profiles_path) do |f| %>
 
             <div class="col-md-6 form-group">
               <%= f.label 'First name' %>
@@ -52,7 +52,19 @@
 
             <div class="col-md-6 form-group">
               <%= f.label 'artist or client' %>
-              <%= f.text_field :profile_type, autofocus: true, :placeholder => @profile.profile_type, :class => "form-control input-lg" %>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="profile[profile_type]" id="client" value="client" checked>
+                  Client
+                </label>
+              </div>
+
+              <div class="radio">
+                <label>
+                  <input type="radio" name="profile[profile_type]" id="artist" value="artist">
+                  Artist
+                </label>
+              </div>
             </div>
 
             <div class="col-md-12 form-group">
