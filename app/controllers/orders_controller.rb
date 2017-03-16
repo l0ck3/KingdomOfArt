@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     @artist_profile = current_user.profile
     @order_artist_user = User.find(@artist_profile.user)
     @orders = Order.all.select{ |order| order.user == current_user || order.artist == current_user }
+
   end
 
   def show
@@ -25,16 +26,34 @@ class OrdersController < ApplicationController
   end
 
   def create
-    artist_profile = current_user.profile
-
     order = Order.new(order_params)
-    order.artist = artist_profile.user
+
     order.user = current_user
+    order.artist = Product.find(order_params[:product_id]).user
+
+    customer = Stripe::Customer.create(
+      source: params[:stripeToken],
+      email:  params[:stripeEmail]
+    )
+
+    charge = Stripe::Charge.create(
+      customer:     customer.id,   # You should store this customer id and re-use it.
+      amount:       order.amount_cents, # or amount_pennies
+      description:  "Payment for product #{order.product_sku} for order #{order.id}",
+      currency:     order.amount.currency
+    )
+
+    order.payment = charge.to_json
+    order.status = 'paid'
+
     if order.save!
-      redirect_to new_order_payment_path(order_id: order.id)
+      redirect_to orders_path
     else
       render :new
     end
+
+    rescue Stripe::CardError => e
+
   end
 
   def edit
@@ -61,4 +80,9 @@ class OrdersController < ApplicationController
     # Never trust user data!
     params.require(:order).permit(:status, :product_id, :offer_title, :offer_body, :offer_price, :amount_cents, :product_sku)
   end
+
+  def set_order
+    @order = Order.where(status: 'purchase_request').find(params[:order_id])
+  end
 end
+
