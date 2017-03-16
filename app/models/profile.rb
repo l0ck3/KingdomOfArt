@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   mount_uploader :universe_picture, UniversePictureUploader
 
   def to_s
-    firstname + " " + lastname
+    firstname.present? ? "#{firstname} #{lastname}" : user.email
   end
 
   def navbar_id
