@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
-  has_many :orders
+  has_many :orders, dependent: :nullify
 
   validates :name, presence: true
 
