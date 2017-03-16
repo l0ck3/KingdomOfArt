@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-sm-12 text-center">
               <h1 class="text-uppercase text-xl montserrat m-b-15"><%= @profile.universe_name %></h1>
-              <p class="lead">We have space for a cool universe sub-title</p>
+
             </div>
           </div>
         </div>
@@ -30,7 +30,9 @@
   <!-- TEAM -->
   <section class="module">
     <div class="container">
-
+    <h3 class="team-name"><%= @profile.firstname.capitalize + " " + @profile.lastname.capitalize %> </h3>
+    <span class="team-role"><%= @profile.city.capitalize + " " + @profile.country %></span>
+    <span class="team-role"><%=  %></span>
       <div class="row">
         <!-- ARTIST -->
         <div class="col-sm-6 col-md-3">
@@ -47,11 +49,6 @@
                 </div>
               </div>
             </div>
-            <div class="team-inner">
-              <h6 class="team-name"><%= @profile.firstname.capitalize + " " + @profile.lastname.capitalize %> </h6>
-              <span class="team-role"><%= @profile.profile_type.capitalize %></span></br>
-              <span class="team-role"><%= @profile.birth_date %></span>
-            </div>
           </div>
         </div>
         <!-- END ARTIST -->
@@ -61,7 +58,7 @@
         <!-- BIOGRAPHY -->
         <div class="col-sm-6 col-md-9">
           <div class="col-sm-9 page-content">
-            <h1>Biography</h1>
+            <h1>About me</h1>
             <p><%= @profile.biography %></p>
           </div>
         </div>
@@ -70,6 +67,7 @@
         <% end %>
 
       </div>
+      <a href="/#universes" class="btn btn-sm btn-circle btn-dark">Discover more</a>
     </div><!-- .row -->
   </section>
 
