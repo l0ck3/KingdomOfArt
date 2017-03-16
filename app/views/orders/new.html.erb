@@ -30,7 +30,7 @@
         <div class="col-sm-8 col-sm-offset-2">
 
           <h4 class="text-center m-b-30">You are interested by a product made by <%= @artist_profile.firstname %></h4>
-          <%= form_for(@order, url: profile_orders_path(@order.artist.profile)) do |f| %>
+          <%= form_for(@order) do |f| %>
 
             <div class="col-md-12 form-group">
               <%= f.label 'Client' %>

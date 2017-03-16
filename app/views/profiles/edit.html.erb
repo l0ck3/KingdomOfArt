@@ -54,14 +54,14 @@
               <%= f.label 'artist or client' %>
               <div class="radio">
                 <label>
-                  <input type="radio" name="profile[profile_type]" id="client" value="client" checked>
+                  <input type="radio" name="profile[profile_type]" id="client" value="client" <%= 'checked' if @profile.profile_type == 'client' %>>
                   Client
                 </label>
               </div>
 
               <div class="radio">
                 <label>
-                  <input type="radio" name="profile[profile_type]" id="artist" value="artist">
+                  <input type="radio" name="profile[profile_type]" id="artist" value="artist" <%= 'checked' if @profile.profile_type == 'artist' %>>
                   Artist
                 </label>
               </div>
