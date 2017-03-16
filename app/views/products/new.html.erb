@@ -1,0 +1,70 @@
+  <!-- PRELOADER -->
+  <div class="page-loader">
+    <div class="loader">Loading...</div>
+  </div>
+  <!-- END PRELOADER -->
+
+<div class="wrapper">
+
+  <!-- PAGE TITLE -->
+  <section class="module-sm bg-white-dark">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+
+          <h3 class="montserrat text-uppercase m-b-10">Your product</h3>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END PAGE TITLE -->
+
+  <!-- LOGIN -->
+  <section class="module">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+          <h4 class="text-center m-b-30">Create your product</h4>
+
+          <%= form_for(@product, url: products_path) do |f| %>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Name' %>
+              <%= f.text_field :name, autofocus: true, :placeholder => @product.description, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Description' %>
+              <%= f.text_area :description, autofocus: true, :placeholder => @product.description, :class => "form-control input-lg", :style => "height:300px;" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <%= f.label 'Price' %>
+              <%= f.number_field :price, autofocus: true, :placeholder => @product.price, :class => "form-control input-lg" %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label>Your Product Picture</label>
+              <%= image_tag(@product.picture) if @product.picture? %>
+              <%= f.file_field :picture, :class => "btn btn-block btn-round btn-base" %>
+              <%= f.hidden_field :picture_cache %>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <button class="btn btn-block btn-round btn-base">Add</button>
+            </div>
+
+            <% end %>
+
+        </div>
+      </div><!-- .row -->
+
+    </div>
+  </section>
+  <!-- END LOGIN -->
+</div>
