@@ -11,9 +11,9 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @artist_profile = current_user.profile
+    order_product = Product.find(params[:product_id])
+    @artist_profile = order_product.user.profile
     order_artist_user = @artist_profile.user
-    order_product = Product.find(params[:order][:product_id])
 
     @order = Order.new
     @order.artist = order_artist_user
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
     order.artist = artist_profile.user
     order.user = current_user
     if order.save!
-      redirect_to new_profiles_order_payment_path(order_id: order.id)
+      redirect_to new_order_payment_path(order_id: order.id)
     else
       render :new
     end
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    redirect_to profiles_orders_path #List of orders
+    redirect_to orders_path #List of orders
   end
 
   private

@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
     @profile.save
 
-    redirect_to root_path # Go bak to home page
+    redirect_to profiles_path
   end
 
   private

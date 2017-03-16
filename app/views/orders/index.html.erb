@@ -46,11 +46,11 @@
                 <td><%= humanized_money_with_symbol(order.product.price) %></td>
                 <td>
                   <div class="btn-list m-b-35">
-                    <%= link_to "Edit", edit_profiles_order_path(order.artist.profile, order), class: "label label-default" %>
-                    <%= link_to "Delete", profiles_order_path(order.artist.profile, order), class: "label label-danger",
+                    <%= link_to "Edit", edit_order_path(order), class: "label label-default" %>
+                    <%= link_to "Delete", order_path(order), class: "label label-danger",
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
-                    <%= link_to "Validate", edit_profiles_order_path(order.artist.profile, order), class: "label label-base" %>
+                    <%= link_to "Validate", edit_order_path(order), class: "label label-base" %>
                     </div>
                 </td>
               </tr>

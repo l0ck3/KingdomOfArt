@@ -1,5 +1,5 @@
 <h1>Purchase of a product : <%= @order.product_sku %> :</h1>
-<%= form_tag profile_order_payments_path(@order) do %>
+<%= form_tag order_payments_path(@order) do %>
   <article>
     <label class="amount">
       <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span></br>

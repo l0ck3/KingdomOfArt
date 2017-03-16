@@ -17,7 +17,9 @@
                 <h6 class="work-title"><%= product.name + " | " + humanized_money_with_symbol(product.price) %> </h6>
                 <span class="work-category"><%= product.description%></span>
 
-                  <%= form_for([@profile, @order], url: new_profiles_order_path(@profile, @order),method: :get) do |f| %>
+                  <%= link_to 'Buy', new_order_path(product_id: product.id), class: "btn btn-block btn-round btn-dark" %>
+
+            <!--       <%= form_for(@order, url: new_order_path, method: :get) do |f| %>
 
                     <div class="col-md-12 form-group">
                       <%= f.hidden_field(:product_id, value: product.id) %>
@@ -26,7 +28,7 @@
                     <div class="form-group">
                       <button class="btn btn-block btn-round btn-dark">Buy</button>
                     </div>
-                  <% end %>
+                  <% end %> -->
 
               </div>
             </div>
